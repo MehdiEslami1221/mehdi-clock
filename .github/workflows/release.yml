@@ -1,0 +1,32 @@
+name: Publish APK
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'downloads/**'
+      - '.github/workflows/release.yml'
+permissions:
+  contents: write
+concurrency:
+  group: publish-apk
+  cancel-in-progress: false
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify download
+        run: cd downloads && sha256sum --check SHA256SUMS
+      - name: Publish signed APK
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          clock_version=$(python3 -c "import re; from pathlib import Path; print(re.search(r\"versionName '([^']+)'\", Path('app/build.gradle').read_text()).group(1))")
+          clock_tag="v$clock_version"
+          if gh release view "$clock_tag" >/dev/null 2>&1; then
+            echo "Release $clock_tag already exists; leaving its assets unchanged."
+          else
+            gh release create "$clock_tag" "downloads/MehdiClock-$clock_version.apk" downloads/SHA256SUMS --target "$GITHUB_SHA" --title "Mehdi Clock $clock_version" --notes-file docs/release-notes.md
+          fi

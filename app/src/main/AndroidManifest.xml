@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <application android:allowBackup="false" android:icon="@drawable/ic_launcher" android:label="@string/app_name" android:supportsRtl="true" android:theme="@android:style/Theme.Material.NoActionBar">
+        <activity android:name=".MainActivity" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+            <intent-filter><action android:name="android.appwidget.action.APPWIDGET_CONFIGURE"/></intent-filter>
+        </activity>
+        <activity android:name=".FullScreenClockActivity" android:exported="false" android:showWhenLocked="true"/>
+        <service android:name=".ClockDreamService" android:label="@string/app_name" android:exported="true" android:permission="android.permission.BIND_DREAM_SERVICE">
+            <intent-filter><action android:name="android.service.dreams.DreamService"/><category android:name="android.intent.category.DEFAULT"/></intent-filter>
+            <meta-data android:name="android.service.dream" android:resource="@xml/clock_dream"/>
+        </service>
+        <service android:name=".ClockWallpaperService" android:label="@string/app_name" android:exported="true" android:permission="android.permission.BIND_WALLPAPER">
+            <intent-filter><action android:name="android.service.wallpaper.WallpaperService"/></intent-filter>
+            <meta-data android:name="android.service.wallpaper" android:resource="@xml/clock_wallpaper"/>
+        </service>
+        <receiver android:name=".ClockWidget" android:exported="false">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+                <action android:name="android.intent.action.TIME_SET"/>
+                <action android:name="android.intent.action.TIMEZONE_CHANGED"/>
+                <action android:name="android.intent.action.LOCALE_CHANGED"/>
+                <action android:name="android.intent.action.CONFIGURATION_CHANGED"/>
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED"/>
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/clock_widget_info"/>
+        </receiver>
+    </application>
+</manifest>

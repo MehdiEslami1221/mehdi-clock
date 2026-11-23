@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">ساعت مهدی</string>
+    <string name="wallpaper_description">ساعت و تاریخ زنده؛ انتخاب صفحهٔ اصلی یا قفل با تنظیمات گوشی</string>
+    <string name="widget_description">ساعت آنالوگ با لوگوی مهدی اسلامی؛ رنگ، تم و اندازهٔ دلخواه</string>
+    <string name="widget_clock">ساعت آنالوگ؛ برای تنظیمات لمس کنید</string>
+</resources>
