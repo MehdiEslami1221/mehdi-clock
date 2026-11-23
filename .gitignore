@@ -1,0 +1,15 @@
+.gradle/
+**/build/
+.idea/
+.kotlin/
+local.properties
+.DS_Store
+.env
+.env.*
+*.jks
+*.keystore
+*.p12
+signing.json
+**/*Signing-Backup*
+*.apk
+!downloads/*.apk
