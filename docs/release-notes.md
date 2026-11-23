@@ -1,31 +1,25 @@
-# Mehdi Clock 1.1.1
+# Mehdi Clock 1.2.0
 
-An Android clock with home-screen widgets, Persian dates and a full-screen display.
+This update adds finer clock customization and makes the settings easier to use.
 
-This patch corrects the launcher screen opening in widget-configuration mode and preserves settings from that early behavior. It uses the same signing key as 1.1.0.
+- Separate size controls for numerals, hand width and length, logo, marks, custom text, digital clock and date.
+- A color box with 24 presets, an HSV square, RGB controls and hex input; colors can be assigned to individual clock parts.
+- A pinned preview and settings updates that preserve the page, focus and scroll position.
+- Larger controls, system font scaling, a readability preset and optional contrast correction.
+- A visible exit button on the full-screen clock.
 
-- Analog, digital and hybrid modes, with dark/light themes and custom colors.
-- Resizable widgets with independent preferences.
-- Persian and Gregorian dates, including the weekday.
-- Editable text on the clock face, with the fixed ME logo.
-- Android screensaver, full-screen clock and live wallpaper.
-- Sharper large clock rendering, plus screensaver brightness and night settings.
-
-Requires Android 12 or newer. The APK is a signed development build. Users of the early 1.0.0 build need to uninstall that version first because its certificate differs.
+The APK uses the same signing key as 1.1.0 and 1.1.1, so those versions can update in place. Android 12 or newer is required.
 
 ---
 
-# ساعت مهدی، نسخهٔ ۱.۱.۱
+# ساعت مهدی، نسخهٔ ۱.۲.۰
 
-ساعت اندرویدی با ویجت صفحهٔ اصلی، تاریخ شمسی و نمایش تمام‌صفحه.
+در این نسخه، تنظیم اندازه و رنگ ساعت کامل‌تر شده و کار با تنظیمات راحت‌تر است.
 
-در این نسخه، باز شدن اشتباه تنظیمات ویجت به‌جای صفحهٔ اصلی اصلاح شده و تنظیمات قبلی هم حفظ می‌شود. امضای برنامه با نسخهٔ ۱.۱.۰ یکسان است.
+- اندازهٔ اعداد، ضخامت و طول عقربه‌ها، لوگو، خط‌ها، نوشته‌ها، ساعت دیجیتال و تاریخ جداگانه تنظیم می‌شود.
+- جعبهٔ رنگ شامل ۲۴ رنگ آماده، طیف رنگ، کنترل‌های قرمز/سبز/آبی و ورود کد رنگ است. هر بخش ساعت می‌تواند رنگ خودش را داشته باشد.
+- پیش‌نمایش بالای تنظیمات می‌ماند و تغییر گزینه‌ها صفحه را از نو نمی‌سازد؛ متن، فوکوس و محل پیمایش حفظ می‌شود.
+- دکمه‌های بزرگ‌تر، پشتیبانی از اندازهٔ متن گوشی، حالت خوانایی بیشتر و حفظ کنتراست اضافه شده‌اند.
+- ساعت تمام‌صفحه دکمهٔ خروج واضح دارد.
 
-- حالت عقربه‌ای، دیجیتال و ترکیبی، با تم روشن و تیره و رنگ دلخواه.
-- ویجت قابل تغییر اندازه، با تنظیمات مستقل.
-- تاریخ شمسی و میلادی، همراه با روز هفته.
-- متن قابل تغییر روی ساعت و لوگوی ثابت ME.
-- اسکرین‌سیور، ساعت تمام‌صفحه و پس‌زمینهٔ زنده.
-- کیفیت بهتر در اندازه‌های بزرگ و تنظیمات روشنایی و حالت شب.
-
-برای اندروید ۱۲ به بالا. فایل نصب، نسخهٔ توسعه با امضای ثابت پروژه است. اگر نسخهٔ اولیهٔ ۱.۰.۰ را داری، به‌دلیل تفاوت امضا ابتدا آن را حذف کن.
+این نسخه با همان امضای نسخه‌های ۱.۱.۰ و ۱.۱.۱ ساخته شده و روی آن‌ها بدون حذف برنامه نصب می‌شود. برای اندروید ۱۲ به بالا.

@@ -1,20 +1,20 @@
 # Validation
 
-Version 1.1.1 was built with JDK 17 and Android SDK 35.
+Version 1.2.0 was built with JDK 17 and Android SDK 35.
 
 ```sh
 ./gradlew assembleDebug assembleDebugAndroidTest testDebugUnitTest lintDebug
 ```
 
-- Debug APK and instrumentation APK: built successfully.
+- App APK and instrumentation APK: built successfully.
 - Android Lint: no errors.
-- Framework checks: 14 passing checks on Android 12 and Android 15 with native graphics.
-- Screenshot capture: one passing check that opens and captures the settings and full-screen Activities on API 35.
-- Calendar example: Monday, 2 Azar 1405, including the next midnight in Tehran.
-- Launcher/configuration check: a normal app launch shows the main controls; a valid widget ID opens widget configuration.
-- Settings saved by early builds under widget ID zero are migrated to app defaults.
-- Widget views, themes, clock modes, high-resolution rendering and service permissions are covered by the checks.
+- 27 passing checks on Android 12 and Android 15, including the screenshot capture on API 35.
+- Checks cover per-component sizes and colors, widget isolation, custom color application, and all clock modes.
+- The settings regression check changes the theme, edits text, steps a size control and confirms the same preview, input view, focus and scroll position remain in use.
+- System text scale at 200% is checked for control target sizes and unclipped button labels. The color dialog is checked at that scale as well.
+- Clock text colors are checked against a 4.5:1 contrast target, and hands/marks against 3:1, on several light and dark faces.
+- Persian calendar, Tehran midnight, launcher/configuration routing, rendering memory and system-service permissions remain covered.
 
-The published APK uses the same signing certificate as 1.1.0. Users of 1.1.0 can update in place. The earlier 1.0.0 build has a different certificate.
+The APK uses the same signing certificate as 1.1.0 and 1.1.1. Those versions can update in place.
 
-Launcher resizing, screensaver activation, keyguard behavior and lock-screen wallpaper support should also be checked on the intended phone. Framework tests do not reproduce a manufacturer's lock screen or Always On Display.
+See docs/ACCESSIBILITY.md for the accessibility targets and limits. Actual TalkBack, manufacturer lock-screen behavior and launcher resizing still need device checks; the automated framework checks do not certify every device or configuration.

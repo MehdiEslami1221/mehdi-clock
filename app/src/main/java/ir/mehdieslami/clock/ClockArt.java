@@ -35,29 +35,31 @@ final class ClockArt {
     }
     static void drawDial(Context context,Settings s,Canvas c,int size) {
         c.save();prepare(c,size,s);
-        Paint p=new Paint(3);int ink=s.ink(context), muted=s.muted(context);
-        p.setColor(s.surface(context));p.setAlpha(Math.round(s.opacity*2.55f));c.drawCircle(256,256,244,p);
+        Paint p=new Paint(3);int ink=s.clockColor(context,"numbers");
+        p.setColor(s.face(context));p.setAlpha(Math.round(s.actualOpacity()*2.55f));c.drawCircle(256,256,244,p);
         p.setAlpha(255);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.5f);
         p.setColor(context.getResources().getColor(android.R.color.transparent,null));
         p.setColor((ink & 0xffffff)|0x22000000);c.drawCircle(256,256,243,p);
-        if(s.style==2){p.setColor(s.accent);p.setAlpha(95);p.setStrokeWidth(2);c.drawCircle(256,256,222,p);p.setAlpha(255);}
+        if(s.style==2){p.setColor(s.clockColor(context,"marks"));p.setStrokeWidth(2);c.drawCircle(256,256,222,p);}
         p.setStyle(Paint.Style.FILL);p.setStrokeCap(Paint.Cap.ROUND);
         for(int i=0;i<60;i++) {
             if(s.style==1 && i%5!=0)continue;
-            c.save();c.rotate(i*6,256,256);p.setColor(i%5==0?s.accent:muted);
-            p.setStrokeWidth(i%5==0?4:1.5f);c.drawLine(256,37,256,i%5==0?51:44,p);c.restore();
+            c.save();c.rotate(i*6,256,256);p.setColor(i%5==0?s.clockColor(context,"marks"):s.colors.containsKey("marks")?s.clockColor(context,"marks"):s.clockColor(context,"subtitle"));
+            p.setStrokeWidth((i%5==0?4:1.5f)*s.marksSize/100f);c.drawLine(256,37,256,i%5==0?51:44,p);c.restore();
         }
-        p.setTypeface(font(context,true));p.setTextAlign(Paint.Align.CENTER);p.setTextSize(29);p.setColor(ink);
+        p.setTypeface(font(context,true));p.setTextAlign(Paint.Align.CENTER);p.setTextSize(29*s.numbersSize/100f);p.setColor(ink);
         for(int i=1;i<=12;i++) {
             if(s.style==1 && i%3!=0) continue;
             double a=Math.toRadians(i*30-90);float x=256+(float)Math.cos(a)*182;
             float y=256+(float)Math.sin(a)*182-(p.ascent()+p.descent())/2;
             c.drawText(digits(Integer.toString(i),s.digits),x,y,p);
         }
-        logo(c,218,157,76,ink);
-        p.setTypeface(font(context,false));p.setTextSize(17);p.setColor(muted);
-        label(context,c,s.title,316,320,17,muted);
-        label(context,c,s.subtitle,316,347,13,muted);c.restore();
+        float logoWidth=76*s.logoSize/100f;
+        logo(c,256-logoWidth/2,185-logoWidth*100/136/2,logoWidth,AccessibleColors.textOn(s.face(context)));
+        int titleSp=Math.round(17*s.titleSize/100f),subtitleSp=Math.round(13*s.subtitleSize/100f);
+        int titleTop=314,subtitleTop=titleTop+Math.max(26,Math.round(titleSp*1.45f));
+        label(context,c,s.title,316,titleTop,titleSp,s.clockColor(context,"title"));
+        label(context,c,s.subtitle,316,subtitleTop,subtitleSp,s.clockColor(context,"subtitle"));c.restore();
     }
     static Bitmap hand(Context context,Settings s,int size,int kind) {
         int width=Math.max(4,(int)Math.ceil(size*36f/512));
@@ -65,10 +67,14 @@ final class ClockArt {
         c.translate(-(size-width)/2f,0);prepare(c,size,s);drawHand(context,s,c,kind);return b;
     }
     static void drawHand(Context context,Settings s,Canvas c,int kind) {
-        Paint p=new Paint(3);p.setStrokeCap(Paint.Cap.ROUND);
-        p.setColor(kind==0?s.ink(context):s.accent);p.setStrokeWidth(kind==0?13:kind==1?8:2.5f);
-        c.drawLine(256,kind==2?290:274,256,kind==0?143:kind==1?91:61,p);
-        if(kind==2){p.setColor(s.accent);c.drawCircle(256,256,7,p);p.setColor(s.surface(context));c.drawCircle(256,256,3,p);}
+        drawHand(context,s,c,kind,new Paint(3));
+    }
+    static void drawHand(Context context,Settings s,Canvas c,int kind,Paint p) {
+        p.setStrokeCap(Paint.Cap.ROUND);p.setColor(s.clockColor(context,kind==0?"hour":kind==1?"minute":"second"));
+        p.setStrokeWidth((kind==0?13:kind==1?8:2.5f)*s.handWidth/100f);
+        float length=(kind==0?113:kind==1?165:195)*s.handLength/100f;
+        c.drawLine(256,kind==2?290:274,256,256-length,p);
+        if(kind==2){c.drawCircle(256,256,7,p);p.setColor(s.face(context));c.drawCircle(256,256,3,p);}
     }
     static void label(Context context,Canvas c,String value,int width,int top,int sp,int color){
         if(value.isEmpty())return;

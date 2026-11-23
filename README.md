@@ -1,6 +1,6 @@
 # Mehdi Clock
 
-[راهنمای فارسی](README.fa.md) · [Download APK](https://github.com/MehdiEslami1221/mehdi-clock/raw/refs/heads/main/downloads/MehdiClock-1.1.1.apk) · [Releases](https://github.com/MehdiEslami1221/mehdi-clock/releases)
+[راهنمای فارسی](README.fa.md) · [Download APK](https://github.com/MehdiEslami1221/mehdi-clock/raw/refs/heads/main/downloads/MehdiClock-1.2.0.apk) · [Releases](https://github.com/MehdiEslami1221/mehdi-clock/releases)
 
 An Android clock with resizable widgets, Persian dates and a clock face you can make your own. It works offline and has no accounts, ads or analytics.
 
@@ -13,6 +13,16 @@ Built with Java and the Android SDK. **Android 12 or newer** is required.
 | <img src="docs/screenshots/settings.png" width="320" alt="Clock settings with a dark analog clock and Persian date"> | <img src="docs/screenshots/fullscreen.png" width="320" alt="Full-screen analog clock with the ME logo and Persian date"> |
 
 These images are captured from the app's Activity views with native Android graphics in the UI checks on API 35.
+
+## Size, color and readability
+
+- Resize the numerals, hands, logo, tick marks, both text lines, digital display and date separately.
+- Pick colors for individual clock parts from 24 swatches, or use the HSV square, RGB controls and hex input.
+- Keep the clock preview visible while scrolling through settings. Changes update the existing controls without rebuilding the page.
+- Use the readability preset for larger numbers, thicker hands and an opaque clock face. Contrast correction can adjust chosen colors for legibility.
+- Settings follow Android's system font size, with large tap targets and +/− controls alongside the sliders.
+
+See [accessibility details](docs/ACCESSIBILITY.md) for the checks and limitations.
 
 ## What it does
 
@@ -30,13 +40,13 @@ The app and screensaver draw the clock as vectors. Widgets render their images t
 
 ## Install
 
-1. [Download MehdiClock-1.1.1.apk](https://github.com/MehdiEslami1221/mehdi-clock/raw/refs/heads/main/downloads/MehdiClock-1.1.1.apk).
+1. [Download MehdiClock-1.2.0.apk](https://github.com/MehdiEslami1221/mehdi-clock/raw/refs/heads/main/downloads/MehdiClock-1.2.0.apk).
 2. Open the APK on your phone and install it. Android may ask you to allow installation from the app you opened it with.
 3. Open **ساعت مهدی** and choose your preferred clock.
 
 The downloadable APK is a development build signed with the project's retained signing key. Its [SHA-256 checksum](downloads/SHA256SUMS) is included.
 
-If you still have the early **1.0.0** build, uninstall it before installing 1.1.1 because the signing certificates differ. This clears its preferences, so add your widgets again afterward.
+If you still have the early **1.0.0** build, uninstall it before installing 1.2.0 because the signing certificates differ. This clears its preferences, so add your widgets again afterward.
 
 ## Add a widget
 
@@ -52,7 +62,7 @@ The **اسکرین‌سیور و ساعت تمام‌صفحه** section offers t
 
 | Option | How it works |
 | --- | --- |
-| Full-screen clock | Opens immediately. Double-tap to exit. It can appear above the lock screen without unlocking the phone. |
+| Full-screen clock | Opens immediately. Use the visible exit button or double-tap to exit. It can appear above the lock screen without unlocking the phone. |
 | Android screensaver | Select **ساعت مهدی** in Android's screensaver settings. It usually runs while charging or docked after inactivity. |
 | Live wallpaper | Opens Android's wallpaper picker. Lock-screen availability depends on the phone. |
 
@@ -74,7 +84,7 @@ On Windows:
 
 The APK is generated at `app/build/outputs/apk/debug/app-debug.apk`.
 
-The tests cover Persian dates and Tehran midnight rollover, per-widget preferences, clock rendering, activity startup and service permissions on Android 12 and Android 15. A separate test captures the screenshots above. GitHub Actions runs the build and checks on pushes and pull requests.
+The tests cover font scaling to 200%, contrast, settings continuity, color selection, Persian dates and Tehran midnight rollover, per-widget preferences, clock rendering, activity startup and service permissions on Android 12 and Android 15. A separate test captures the screenshots above. GitHub Actions runs the build and checks on pushes and pull requests.
 
 See [the build guide](docs/BUILDING.md) for signing, screenshots and device checks.
 

@@ -6,8 +6,8 @@ android {
         applicationId 'ir.mehdieslami.clock'
         minSdk 31
         targetSdk 35
-        versionCode 3
-        versionName '1.1.1'
+        versionCode 4
+        versionName '1.2.0'
         testInstrumentationRunner 'ir.mehdieslami.clock.SmokeInstrumentation'
     }
     compileOptions { sourceCompatibility JavaVersion.VERSION_17; targetCompatibility JavaVersion.VERSION_17 }

@@ -5,12 +5,12 @@
         <AnalogClock android:id="@+id/widget_clock" android:layout_width="match_parent" android:layout_height="match_parent" android:contentDescription="@string/widget_clock"/>
         <LinearLayout android:id="@+id/widget_digital" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center" android:visibility="gone">
             <ImageView android:id="@+id/widget_logo" android:layout_width="56dp" android:layout_height="42dp" android:src="@drawable/ic_monogram" android:background="#101712" android:padding="3dp" android:contentDescription="@string/app_name"/>
-            <TextClock android:id="@+id/widget_digital_time" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:fontFamily="@font/iran_sans_bold" android:textSize="36sp" android:singleLine="true" android:autoSizeTextType="uniform" android:autoSizeMinTextSize="18sp" android:autoSizeMaxTextSize="64sp" android:autoSizeStepGranularity="2sp"/>
+            <TextClock android:id="@+id/widget_digital_time" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:fontFamily="@font/iran_sans_bold" android:textSize="36sp" android:singleLine="true"/>
             <TextView android:id="@+id/widget_title" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:fontFamily="@font/iran_sans" android:textSize="13sp" android:maxLines="1" android:ellipsize="end"/>
-            <TextView android:id="@+id/widget_subtitle" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:fontFamily="@font/iran_sans" android:textSize="11sp" android:maxLines="1" android:ellipsize="end"/>
+            <TextView android:id="@+id/widget_subtitle" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:fontFamily="@font/iran_sans" android:textSize="12sp" android:maxLines="1" android:ellipsize="end"/>
         </LinearLayout>
     </FrameLayout>
     <TextClock android:id="@+id/widget_hybrid_time" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:fontFamily="@font/iran_sans_bold" android:textSize="20sp" android:visibility="gone"/>
     <TextView android:id="@+id/widget_date" android:layout_width="match_parent" android:layout_height="wrap_content"
-        android:fontFamily="@font/iran_sans" android:textSize="13sp" android:gravity="center" android:maxLines="4" android:paddingBottom="3dp"/>
+        android:fontFamily="@font/iran_sans" android:textSize="13sp" android:gravity="center" android:paddingBottom="3dp"/>
 </LinearLayout>

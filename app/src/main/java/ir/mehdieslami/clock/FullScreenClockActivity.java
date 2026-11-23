@@ -11,7 +11,7 @@ public final class FullScreenClockActivity extends Activity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         Settings s=Settings.load(this,-1);if(s.saverNight){s.theme=0;s.opacity=0;}
         WindowManager.LayoutParams p=getWindow().getAttributes();p.screenBrightness=s.saverBrightness/100f;getWindow().setAttributes(p);
-        content=new SaverView(this,s);setContentView(content);
+        content=new SaverView(this,s);content.addExitAction(this::finish);setContentView(content);
         content.setOnApplyWindowInsetsListener((v,insets)->{
             android.graphics.Insets cutout=insets.getInsets(WindowInsets.Type.displayCutout());v.setPadding(cutout.left,cutout.top,cutout.right,cutout.bottom);return insets;
         });

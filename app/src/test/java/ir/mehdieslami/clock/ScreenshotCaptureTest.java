@@ -22,6 +22,7 @@ public class ScreenshotCaptureTest {
         Settings settings=new Settings();settings.zone="Asia/Tehran";settings.saverNight=true;settings.save(context,-1);
         var main=Robolectric.buildActivity(MainActivity.class).setup().visible();
         capture(main,"settings.png");main.pause().stop().destroy();
+        settings.readablePreset();settings.save(context,-1);
         var full=Robolectric.buildActivity(FullScreenClockActivity.class).setup().visible();
         capture(full,"fullscreen.png");full.pause().stop().destroy();
     }
